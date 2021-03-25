@@ -1,7 +1,7 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function transform(arr) {
-  console.log(arr)
+
   let result1 = [];
   let result2 = [];
   let result3 = [];
