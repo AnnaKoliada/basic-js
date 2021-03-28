@@ -15,7 +15,7 @@ module.exports = function dateSample(sampleActivity) {
   let t = Math.ceil(
     Math.log(MODERN_ACTIVITY / sample) / (0.693 / HALF_LIFE_PERIOD)
   );
-console.log(typeof(t))
+
 if (isNaN(t) == true) return false;
   return t;
   // remove line with error and write your code here
