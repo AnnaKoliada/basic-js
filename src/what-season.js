@@ -1,44 +1,23 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(date) {
-  
-  let dateVerification = new Date(date); 
-  if(date.getTime() !== dateVerification.getTime())
-  {
+  if (Object.prototype.toString.call(date) !== "[object Date]") {
     throw new Error();
   }
-  if (date == null) {
-    return 'Unable to determine the time of year!';
+  if (!date) {
+    return "Unable to determine the time of year!";
   }
-  
-  let DateStart = new Date(2020, 0, 01);
 
-  let winter1 = new Date(2020, 11, 31);
-  let winter = new Date(2020, 01, 29);
-  let spring = new Date(2020, 04, 31);
-  let summer = new Date(2020, 07, 31);
-  let autumn = new Date(2020, 10, 30);
-
-  let winter1T = winter1.getTime() - DateStart.getTime();
-  let winterT = winter.getTime() - DateStart.getTime();
-  let springT = spring.getTime() - DateStart.getTime();
-  let summerT = summer.getTime() - DateStart.getTime();
-  let autumnT = autumn.getTime() - DateStart.getTime();
-
-  let Datedate = new Date(date);
-  let Datetask = new Date(Datedate.getFullYear(), 0, 01);
-  let Timetask = Datedate.getTime() - Datetask.getTime();
-
-  if ((Timetask <= winter1T && Timetask > autumnT) || Timetask <= winterT) {
+  if (date.getMonth() == 11 || date.getMonth() == 0 || date.getMonth() == 1) {
     return "winter";
   }
-  if (Timetask > winterT && Timetask <= springT) {
+  if (date.getMonth() > 1 && date.getMonth() <= 4) {
     return "spring";
   }
-  if (Timetask <= summerT && Timetask > springT) {
+  if (date.getMonth() > 4 && date.getMonth() <= 7) {
     return "summer";
   }
-  if (Timetask <= autumnT && Timetask > summerT) {
+  if (date.getMonth() > 7 && date.getMonth() <= 10) {
     return "autumn";
   }
 };
